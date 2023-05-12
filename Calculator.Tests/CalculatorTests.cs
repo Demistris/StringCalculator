@@ -99,5 +99,21 @@ namespace StringCalculator.Tests
             //Assert
             result.Should().Be(expected);
         }
+
+        ////[***]\n1***2***3
+        [Theory]
+        [InlineData("//[***]\n1***2***3", 6)]
+        [InlineData("//[*]\n1*2*3", 6)]
+        public void Add_AddsNumberAnyLengthDelimiter_WhenStringIsValid(string calculation, int expected)
+        {
+            //Arrange
+            var sut = new Calculator();
+
+            //Act
+            var result = sut.Add(calculation);
+
+            //Assert
+            result.Should().Be(expected);
+        }
     }
 }

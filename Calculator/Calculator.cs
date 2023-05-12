@@ -11,7 +11,7 @@ namespace StringCalculator
     {
         public int Add(string numbers)
         {
-            var delimiters = new List<char> { ',', '\n'};
+            var delimiters = new List<char> { ',', '\n', '*', '[', ']'};
 
             if(numbers.StartsWith("//"))
             {
@@ -21,6 +21,8 @@ namespace StringCalculator
                 delimiters.Add(customDelimeter);
                 numbers = splitOnFirstNewLine[1];
             }
+
+            
 
             var splitNumbers = numbers.Split(delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
 
