@@ -84,5 +84,20 @@ namespace StringCalculator.Tests
             //Assert
             action.Should().Throw<Exception>().WithMessage("Negatives not allowed: " + negativeNumbers);
         }
+
+        [Theory]
+        [InlineData("1001,2", 2)]
+        [InlineData("1234,0", 0)]
+        public void Add_IgnoreNumbersHigherThan1000_WhenStringIsValid(string calculation, int expected)
+        {
+            //Arrange
+            var sut = new Calculator();
+
+            //Act
+            var result = sut.Add(calculation);
+
+            //Assert
+            result.Should().Be(expected);
+        }
     }
 }

@@ -24,6 +24,14 @@ namespace StringCalculator
 
             var splitNumbers = numbers.Split(delimiters.ToArray(), StringSplitOptions.RemoveEmptyEntries).Select(int.Parse).ToList();
 
+            for (int i = 0; i < splitNumbers.Count; i++)
+            {
+                if (splitNumbers[i] > 1000)
+                {
+                    splitNumbers[i] = 0;
+                }
+            }
+
             var negativeNumbers = splitNumbers.Where(x => x < 0).ToList();
 
             if(negativeNumbers.Any())
